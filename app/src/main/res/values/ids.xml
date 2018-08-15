@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="toolbar_main_activity" type="id"/>
+    <item name="drawer_layout_main_activity" type="id"/>
+    <item name="navigation_drawer_main_activity" type="id"/>
+    <item name="fragment_main_activity" type="id"/>
 </resources>

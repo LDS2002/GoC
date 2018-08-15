@@ -1,55 +1,36 @@
 package com.games.yshmgrt.gok.activities.mainactivity.views
 
-import android.graphics.Color
-import android.support.constraint.ConstraintSet.PARENT_ID
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.Toolbar
-import android.view.ViewGroup
+import android.support.v4.view.GravityCompat
 import com.games.yshmgrt.gok.R
 import com.games.yshmgrt.gok.activities.mainactivity.MainActivity
-import com.games.yshmgrt.gok.activities.mainactivity.views.adapters.MainViewRecyclerAdapter
-import com.games.yshmgrt.gok.loader.DataLoader
-import org.jetbrains.anko.*
-import org.jetbrains.anko.constraint.layout.ConstraintSetBuilder.Side.*
-import org.jetbrains.anko.constraint.layout.applyConstraintSet
-import org.jetbrains.anko.constraint.layout.constraintLayout
-import org.jetbrains.anko.recyclerview.v7.recyclerView
+import com.games.yshmgrt.gok.activities.mainactivity.views.fragments.LevelListFragment
+import org.jetbrains.anko.AnkoComponent
+import org.jetbrains.anko.AnkoContext
+import org.jetbrains.anko.design.navigationView
+import org.jetbrains.anko.linearLayout
+import org.jetbrains.anko.matchParent
+import org.jetbrains.anko.support.v4.drawerLayout
 
-class MainView : AnkoComponent<MainActivity> {
+
+class MainView : AnkoComponent<MainActivity>{
+
     override fun createView(ui: AnkoContext<MainActivity>) = ui.apply {
-        constraintLayout {
+        drawerLayout {
+            id = R.id.drawer_layout_main_activity
             fitsSystemWindows = true
-            val toolbar = toolbar {
-                id = R.id.toolbar_main_activity
-                backgroundColorResource = R.color.colorPrimary
-                setTitleTextColor(Color.WHITE)
-                title = "Hello, World!"
-                elevation = dip(8).toFloat()
-            }.lparams(width = matchParent)
-            val recycler = recyclerView {
-                id = ViewGroup.generateViewId()
-                adapter = MainViewRecyclerAdapter(DataLoader.levelInfoList)
-                layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            }.lparams(width = matchParent, height = 0)
+            lparams(width = matchParent, height = matchParent)
 
-            applyConstraintSet {
-                toolbar {
-                    connect(
-                            TOP to TOP of PARENT_ID,
-                            LEFT to LEFT of PARENT_ID,
-                            RIGHT to RIGHT of PARENT_ID,
-                            BOTTOM to TOP of recycler
-                    )
-                }
-                recycler {
-                    connect(
-                            TOP to BOTTOM of toolbar,
-                            LEFT to LEFT of PARENT_ID,
-                            RIGHT to RIGHT of PARENT_ID,
-                            BOTTOM to BOTTOM of PARENT_ID
-                    )
-                }
-            }
+            linearLayout {
+                id = R.id.fragment_main_activity
+                ui.owner.supportFragmentManager.beginTransaction().add(R.id.fragment_main_activity, LevelListFragment()).commit()
+            }.lparams(width = matchParent, height = matchParent)
+
+            navigationView {
+                id = R.id.navigation_drawer_main_activity
+                fitsSystemWindows = true
+                inflateMenu(R.menu.navigation_drawer_main_activity)
+            }.lparams(height = matchParent, gravity = GravityCompat.START)
         }
+
     }.view
 }
