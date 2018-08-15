@@ -51,6 +51,8 @@ dependencies {
     implementation "org.jetbrains.anko:anko-design:$anko_version"
     implementation "org.jetbrains.anko:anko-design-coroutines:$anko_version"
 
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
+
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization_version"
 }
 

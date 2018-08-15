@@ -20,6 +20,7 @@
             android:name=".TestActivity"
             android:label="@string/title_activity_test"
             android:theme="@style/AppTheme" />
+        <activity android:name=".activities.gameactivity.GameActivity"></activity>
     </application>
 
 </manifest>

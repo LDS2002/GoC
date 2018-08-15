@@ -3,11 +3,13 @@ package com.games.yshmgrt.gok.activities.mainactivity.views
 import android.support.constraint.ConstraintSet.PARENT_ID
 import android.view.ViewGroup
 import android.widget.TextView
+import com.games.yshmgrt.gok.activities.gameactivity.GameActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.constraint.layout.ConstraintSetBuilder.Side.*
 import org.jetbrains.anko.constraint.layout.applyConstraintSet
 import org.jetbrains.anko.constraint.layout.constraintLayout
+import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class MainViewRecyclerItem : AnkoComponent<ViewGroup> {
     lateinit var nameTextView : TextView
@@ -19,6 +21,9 @@ class MainViewRecyclerItem : AnkoComponent<ViewGroup> {
                 marginEnd = dip(8)
                 topMargin = dip(8)
                 bottomMargin = dip(8)
+            }
+            onClick {
+                startActivity<GameActivity>()
             }
             cardElevation = dip(4).toFloat()
             constraintLayout {

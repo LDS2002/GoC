@@ -3,6 +3,7 @@ package com.games.yshmgrt.gok.activities.mainactivity.views
 import android.graphics.Color
 import android.support.constraint.ConstraintSet.PARENT_ID
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.Toolbar
 import android.view.ViewGroup
 import com.games.yshmgrt.gok.R
 import com.games.yshmgrt.gok.activities.mainactivity.MainActivity
@@ -19,7 +20,7 @@ class MainView : AnkoComponent<MainActivity> {
         constraintLayout {
             fitsSystemWindows = true
             val toolbar = toolbar {
-                id = ViewGroup.generateViewId()
+                id = R.id.toolbar_main_activity
                 backgroundColorResource = R.color.colorPrimary
                 setTitleTextColor(Color.WHITE)
                 title = "Hello, World!"
