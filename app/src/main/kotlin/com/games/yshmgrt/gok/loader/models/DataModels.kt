@@ -1,4 +1,4 @@
-package com.games.yshmgrt.gok
+package com.games.yshmgrt.gok.loader.models
 
 import kotlinx.serialization.Serializable
 
